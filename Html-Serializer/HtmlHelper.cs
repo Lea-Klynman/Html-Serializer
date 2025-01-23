@@ -15,10 +15,17 @@ namespace Html_Serializer
         public string[] HtmlVoidTags { get; set; }
         private HtmlHelper()
         {
-            var HtmlTags = File.ReadAllText("tagsList/HtmlTags.json");
-            var HtmlVoidTags = File.ReadAllText("tagsList/HtmlVoidTags.json");
-            this.HtmlTags = JsonSerializer.Deserialize<string[]>(HtmlTags);
-            this.HtmlVoidTags = JsonSerializer.Deserialize<string[]>(HtmlVoidTags);
+            try
+            {
+                var HtmlTags = File.ReadAllText("tagsList/HtmlTags.json");
+                var HtmlVoidTags = File.ReadAllText("tagsList/HtmlVoidTags.json");
+                this.HtmlTags = JsonSerializer.Deserialize<string[]>(HtmlTags);
+                this.HtmlVoidTags = JsonSerializer.Deserialize<string[]>(HtmlVoidTags);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to load HTML tag definitions.", ex);
+            }
         }
     }
 }
