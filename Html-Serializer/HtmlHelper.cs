@@ -21,7 +21,7 @@ namespace Html_Serializer
                 var HtmlVoidTags = File.ReadAllText("tagsList/HtmlVoidTags.json");
                 this.HtmlTags = JsonSerializer.Deserialize<string[]>(HtmlTags);
                 this.HtmlVoidTags = JsonSerializer.Deserialize<string[]>(HtmlVoidTags);
-           
+// a change to branch
             }
             catch (Exception ex)
             {
@@ -30,3 +30,6 @@ namespace Html_Serializer
         }
     }
 }
+#region
+//comment
+#endregion
